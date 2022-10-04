@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/styles/style.css') }}">
+
+    <style>
+        #surveyContainer {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #infoDiv {
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        #button {
+            margin-top: 10px;
+        }
+
+        #infoDiv {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #submittedInfo {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            margin-left: 20px;
+            width: 180px
+        }
+
+        #text {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    </style>
+
+</head>
+
+
+
+<body>
+    <div id="whatever">
+        <div id="surveyContainer">
+            <h1>
+                Submitted Info
+            </h1>
+            <div id="text">
+                <div id="infoDiv">
+                    <span>Name:</span>
+                    <span>Location:</span>
+                    <span>Fav Language:</span>
+                    <span>Comment:</span>
+                </div>
+                <div id="submittedInfo">
+                    <span>{{ session['name'] }}</span>
+                    <span>{{ session['location'] }}</span>
+                    <span>{{ session['language'] }}</span>
+                    <span>{{ session['comments'] }}</span>
+                </div>
+            </div>
+            <form id="button" action="/reset">
+                <input type="submit" value="start over">
+            </form>
+        </div>
+        
+    </div>
+</body>
+
+</html>

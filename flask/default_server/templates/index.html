@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/styles/style.css') }}">
+</head>
+
+<body>
+<!-- <img src="{{ url_for('static', filename='/img/my_img.png') }}"> -->
+<h1>Welcome!</h1>
+<div id="test">
+    {% for x in range(0,times): %}
+    {{ phrase }}
+    {% endfor %}
+</div>
+
+<!-- <script type="text/javascript" src="{{ url_for('static', filename='/js/script.js') }}"></script> -->
+</body>
+</html>
+
+
+
+<!-- <h3>My Flask Template</h3>
+<p>Phrase: {{ phrase }}</p>
+<p>Times: {{ times }}</p>
+      
+{% for x in range(0,times): %}
+    <p>{{ phrase }}</p>
+{% endfor %}
+      
+{% if phrase == "hello" %}
+  <p>The phrase says hello</p>
+{% endif %} -->

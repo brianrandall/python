@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+<style>
+#container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.blueBox {
+    background-color: {{ phrase }};
+    border: 2px solid black;
+    width: 200px;
+    height: 200px;
+    border-radius: 15%;
+    margin: 5px;
+}
+
+#row {
+    display: flex;
+    flex-wrap: wrap;
+
+}
+
+</style>
+<body>
+
+
+<div id="container">
+    <h1>Welcome</h1>
+    <div id="row">
+        {% for x in range(0,times): %}
+        <div class="blueBox"></div>
+{% endfor %}
+    </div>
+</div>
+
+</body>
+</html>

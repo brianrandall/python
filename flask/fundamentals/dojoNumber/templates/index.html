@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/styles/style.css') }}">
+<style>
+#container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+#form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+#submitButton {
+    margin-top: 10px;
+}
+
+{{ session['boxxxyActivate'] }}boxxxy {
+    border: 2px solid black;
+    padding: 150px;
+    margin-top: 20px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+</style>
+</head>
+
+<body>
+
+<div id="container">
+    <h1> Welcome to the Great Number Game</h1>
+    <h2>~ I am thinking of a number between 1 and 100 ~ </h2>
+    <h2>.....</h2>
+    <h2>....</h2>
+    <h2>...</h2>
+    <h2>..</h2>
+    <h2>.</h2>
+    <h3>Take a guess!</h3>
+
+    <form id="form" action='/input' method='post'>
+        <p> 
+            <input type='text' name='user_input'>
+        </p>
+        <input id="submitButton" type='submit' value='submit'>
+    </form>
+    
+    <div id="boxxxy", style="background-color:
+    {{ session['boxxxyColor'] }}";>
+        <p> {{session['boxxxyText']}} </p>
+        <form  action="/destroy_session">
+            <input type="{{ session['inputType'] }}" value="reset">
+        </form>
+    </div>
+
+</div>
+
+
+
+
+</body>
+</html>

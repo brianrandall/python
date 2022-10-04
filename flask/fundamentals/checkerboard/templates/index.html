@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/styles/style.css') }}">
+</head>
+
+<body>
+<!-- <img src="{{ url_for('static', filename='/img/my_img.png') }}"> -->
+<h1 style="background-color: {{ color2 }};
+color: {{ color1}};">CHECKERBOARD!</h1>
+
+<table>
+    <tbody>
+        {% for i in range(0, row) %}
+            <tr>
+                {% for x in range(0,col) %}
+                    {% if (x+1) % 2 == 0 %}
+                        <td style="background-color: {{color1}};"></td>
+                    {% else %}
+                        <td style="background-color: {{color2}};"></td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+</body>
+</html>
+
+
+
