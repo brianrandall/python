@@ -1,0 +1,30 @@
+-- INSERT INTO `names`.`users` (`first_name`, `last_name`, `email`) 
+-- VALUES ('brian', 'randall', 'brian@mail.com'), ('guy', 'dingdong', 
+'guyding@dong.com'), ('dude', 'duderson', 'dude@son.com');
+
+-- select *
+-- from users
+
+-- select first_name, last_name
+-- from users
+-- where email = 'brian@mail.com'
+
+-- select first_name, last_name
+-- from users
+-- where id = 3
+
+-- update users
+-- set last_name = 'pancakes'
+-- where id = 3
+
+-- delete from users
+-- where id = 2
+
+-- select *
+-- from users
+-- order by first_name asc
+
+-- select *
+-- from users
+-- order by first_name desc
+

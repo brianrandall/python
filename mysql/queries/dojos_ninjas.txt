@@ -1,0 +1,38 @@
+-- select * from dojos
+
+-- INSERT INTO dojos (name) VALUES ('dojo 1'), ('dojo 2'), ('dojo 3');
+
+
+-- DELETE FROM `dojos_ninjas`.`dojos` WHERE (`id` = '1');
+-- DELETE FROM `dojos_ninjas`.`dojos` WHERE (`id` = '2');
+-- DELETE FROM `dojos_ninjas`.`dojos` WHERE (`id` = '3');
+
+-- INSERT INTO dojos (name) VALUES ('dojo 4'), ('dojo 5'), ('dojo 6');
+
+-- INSERT INTO `dojos_ninjas`.`ninjas` (`first_name`, `last_name`, 
+`dojo_id`) VALUES ('ninja', 'one', '5');
+-- INSERT INTO `dojos_ninjas`.`ninjas` (`first_name`, `last_name`, 
+`dojo_id`) VALUES ('ninja', 'two', '5');
+-- INSERT INTO `dojos_ninjas`.`ninjas` (`first_name`, `last_name`, 
+`dojo_id`) VALUES ('ninja', 'three', '5');
+-- INSERT INTO `dojos_ninjas`.`ninjas` (`first_name`, `last_name`, 
+`dojo_id`) VALUES ('2ninja', '2one', '6');
+-- INSERT INTO `dojos_ninjas`.`ninjas` (`first_name`, `last_name`, 
+`dojo_id`) VALUES ('2ninja', '2two', '6');
+-- INSERT INTO `dojos_ninjas`.`ninjas` (`first_name`, `last_name`, 
+`dojo_id`) VALUES ('2ninja', '3three', '6');
+-- INSERT INTO `dojos_ninjas`.`ninjas` (`first_name`, `last_name`, 
+`dojo_id`) VALUES ('3ninja', '3one', '7');
+-- INSERT INTO `dojos_ninjas`.`ninjas` (`first_name`, `last_name`, 
+`dojo_id`) VALUES ('3ninja', '3two', '7');
+-- INSERT INTO `dojos_ninjas`.`ninjas` (`first_name`, `last_name`, 
+`dojo_id`) VALUES ('3ninja', '3three', '7');
+
+-- select * from ninjas
+-- where dojo_id = 5
+
+-- select * from ninjas
+-- where dojo_id = 7
+
+-- select dojo_id from ninjas
+-- where id = 7
