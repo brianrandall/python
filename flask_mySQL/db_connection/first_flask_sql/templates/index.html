@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/styles/style.css') }}">
+</head>
+
+<body>
+
+<form action="/create_friend" method="post">
+    <h1>Add a Friend</h1>
+<form action="/create_friend" method="POST">
+    <label for="fname">First Name:</label>
+    <input type="text" name="fname">
+    <label for="lname">Last Name:</label>
+    <input type="text" name="lname">
+    <label for="occ" >Occupation:</label>
+    <input type="text" name="occ">
+    <input type="submit" value="Add Friend">
+</form> 
+</form>
+
+<h1>These are my friend!</h1>
+<table>
+    <thead>
+        <tr>
+            <th>
+                first name
+            </th>
+            <th>
+                last name
+            </th>
+            <th>
+                occupation
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for one_friend in friends %}
+        <tr>
+            <td>{{one_friend.first_name}}</td>
+            <td>{{one_friend.last_name}}</td>
+            <td>{{one_friend.occupation}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+
+</html>

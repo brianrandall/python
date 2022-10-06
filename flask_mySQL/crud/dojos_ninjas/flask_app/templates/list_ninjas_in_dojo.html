@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<head>
+<!-- temporary css link - change this later u fuck -->
+<link rel="stylesheet" type="text/css" href="../static/css/style.css">
+<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/styles/style.css') }}"> -->
+
+</head>
+<body>
+    <div id="leftCol">
+    <h1>{{dojo_name}} Ninjas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>first name</th>
+                <th>last name</th>
+                <th>age</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{% for names in ninjas %}}
+            <tr>
+                <td>{{names.first_name}}</td> 
+                <td>{{names.last_name}}</td> 
+                <td>{{names.age}}</td> 
+                frank
+            </tr>
+            {{%endfor}}
+        </tbody>
+    </table>
+
+    <a href="/dojos">home</a>
+</div>
+
+</body>
+
+</html>

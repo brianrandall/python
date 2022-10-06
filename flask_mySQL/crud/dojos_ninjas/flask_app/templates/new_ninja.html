@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+<!-- temporary css link - change this later u fuck -->
+<link rel="stylesheet" type="text/css" href="../static/css/style.css">
+<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/styles/style.css') }}"> -->
+
+</head>
+<body>
+    <div id="leftCol">
+    <h1>New Ninja</h1>
+    <form action="/create_new_ninja" method="POST">
+        <p>dojo <select name="dojo">
+            <option selected disabled>--select a dojo--</option>
+            {{% for name in dojos}}
+            <option name="{{name.dojo_name}}">{{name.dojo_name}}</option>
+        </select></p>
+        <input name="id" type="hidden" value="{{user.id}}">
+        <p><label for="first_name">First Name:</label>
+        <input type="text" name="first_name" ></p>
+       <p <label for="last_name">Last Name:</label>
+        <input type="text" name="last_name"></p>
+       <p> <label for="age">age:</label>
+       <input type="text" name="age">
+       <p> <input type="submit" value="update"></p>
+    </form>
+    <a href="/dojos">home</a>
+</div>
+</body>
+
+</html>

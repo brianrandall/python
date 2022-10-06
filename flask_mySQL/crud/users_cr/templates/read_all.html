@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<head>
+
+</head>
+
+<body>
+<h1>ALL YOOOOOO ZERZ</h1>
+<table>
+    <thead>
+        <tr>
+            <th>
+                id
+            </th>
+            <th>
+                first name
+            </th>
+            <th>
+                last name
+            </th>
+            <th>
+                email
+            </th>
+            <th>
+                user since
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for x in users: %}
+        <tr>
+            <td>{{x.id}}</td>
+            <td>{{x.first_name}}</td>
+            <td>{{x.last_name}}</td>
+            <td>{{x.email}}</td>
+            <td>{{x.created_at}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="/">add new user</a>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<head>
+<style>
+#userBox {
+    border: 2px solid black;
+    width: fit-content;
+}
+</style>
+</head>
+
+<body>
+<h1>user {{user.id}}</h1>
+<div id="userBox">
+   <p> full name -- {{ user.first_name }} {{ user.last_name }}</p>
+   <p> email -- {{user.email}} </p>
+   <p> created on -- {{user.created_at}} </p>
+   <p> last updated -- {{user.updated_at}} </p>
+</div>
+<a href="/users/edit/{{ user.id }}">edit</a> | <a href="/users/delete/{{ user.id }}">delete</a> | 
+<a href="/">add new user</a>
+
+</body>
+</html>
