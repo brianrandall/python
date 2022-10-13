@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- temporary css link - change this later u fuck -->
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/styles/style.css') }}"> -->
+
+</head>
+
+<body>
+    <div id="header">
+        <h1>Coding Dojo Wall</h1>
+        <div id="welcome_logout">
+            <h2>Welcome {{user.first_name}}!!!</h2>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+
+    <div id="container">
+        <div id="leftCol">
+                <h2>{{messages|length}} messages for you</h2>    
+                {% for message in messages %}
+                        <h3>{{message.sender}} said {{message.time_span()}}:</h3>
+                        <p>{{message.content}}</p>
+                        <a href="/destroy/message/{{message.id}}">Delete</a>
+                {% endfor %}
+        </div>
+        <div id="rightCol">
+            <h2>Send a Message:</h2>
+            {% for x in users %}
+                {% if x.id != session.user_id %}
+                <form action="/post_message" method="post">
+                    <input type="hidden" name="sender_id" value={{session.user_id}}>
+                    <input type="hidden" name="receiver_id" value={{x.id}}>
+                    <label for="receiver_id">Message {{x.first_name}}:</label>
+                    <textarea name="content" cols="30" rows="3"></textarea>
+                    <input type="submit" value="Message">
+                </form>
+                {% endif %}
+            {% endfor %}
+        </div>
+</body>
+</html>

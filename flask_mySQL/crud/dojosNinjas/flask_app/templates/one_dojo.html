@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<head>
+    <!-- temporary css link - change this later u fuck -->
+    <!-- <link rel="stylesheet" type="text/css" href="../static/css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/styles/style.css') }}">
+    
+</head>
+
+<body>
+    <div id="container">
+        <h1>{{dojo.name}}</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                        first name
+                    </th>
+                    <th>
+                        last name
+                    </th>
+                    <th>
+                        age
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in ninjas %}
+                    <tr>
+                        <td>
+                            {{x.first_name}}
+                        </td>
+                        <td>
+                            {{x.last_name}}
+                        </td>
+                        <td>
+                            {{x.age}}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/ninjas">add new ninja</a>
+       <p> <a href="/">home</a>
+       </p>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+    <!-- temporary css link - change this later u fuck -->
+    <!-- <link rel="stylesheet" type="text/css" href="../static/css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/style.css') }}">
+    
+</head>
+<body>
+
+<div id="resultsContainer">
+    <div id="success">
+        <p>
+            the email you entered is valid, thank you
+        </p>
+    </div>
+    <div id="table">
+        <h2>
+            email addresses entered
+        </h2>
+        
+        {% for x in emails %}
+        <p>
+            {{x.email}} {{x.created_at}}
+        </p>
+        {% endfor %}
+    </div>
+</div>
+
+</body>
+
+</html>

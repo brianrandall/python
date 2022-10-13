@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/style.css') }}"> -->
+ </head>
+
+<body>
+
+    <h1>Welcome </h1>
+    <a href="/home">back to recipes</a>
+    <a href="/user/logout">log out</a>
+    <h2>{{recipes.name}}</h2>
+    <h4>posted by: {{recipes.user.first_name}} </h4>
+    <div id="oneRecipe">
+        <p>
+           <span> description: </span>
+           <span> {{recipes.description}}</span>
+        </p>
+        <p>
+            <span> under 30?: </span>
+               {% if recipes.under_30 == 1 %}
+                  <span> yes</span>
+               {% else %}
+                  <span> no</span>
+               {% endif %}
+         </p>
+         <p>
+            <span> instructions: </span>
+            <span> {{recipes.instructions}}</span>
+         </p>
+         <p>
+            <span> date made: </span>
+            <span> {{recipes.created_at}}</span>
+         </p>
+        
+    </div>
+    
+    
+    
+
+</body>
+
+
+</html>

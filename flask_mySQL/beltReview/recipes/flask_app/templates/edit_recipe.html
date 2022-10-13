@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/style.css') }}"> -->
+ </head>
+
+<body>
+<h1>edit recipe</h1>
+<a href="/home">back 2 recipes</a>
+<a href="/users/logout">logoutttt</a>
+<div id="warning">
+    <p>{% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+        {% if messages %}                            <!-- check if there are any messages -->
+                {% for message in messages %}            <!-- loop through the messages -->
+                    <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                {% endfor %}
+            {% endif %}
+        {% endwith %}</p>
+</div>
+<div id="form">
+    <form action="/recipes/edit/process" method="post">
+        <input type="hidden" name="id" value="{{recipes.id}}">
+        <p>
+            name
+            <input type="text" name="recipe_name" value="{{recipes.name}}"> 
+        </p>
+        <p>
+            date created
+            <input type="date" name="created_at" value="{{recipes.created_at}}">
+        </p>
+        <p>
+            under 30 minutes ?
+            <input type="radio" name="recipe_under_30" value="1" checked> yes
+            <input type="radio" name="recipe_under_30" value="0"> no
+        </p>
+        <p>
+            description
+            <textarea name="recipe_description" cols="30" rows="10">{{recipes.description}} </textarea>
+        </p>
+        <p>
+            instructions
+            <textarea name="recipe_instructions" cols="30" rows="10"> {{recipes.instructions}}</textarea>
+        </p>
+        <input type="submit" value="update">
+    </form>
+</div>
+</body>
+
+
+</html>

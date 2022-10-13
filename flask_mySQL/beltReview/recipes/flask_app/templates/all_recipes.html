@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<head>
+    <!-- <link rel="stylesheet" type="text/css" href="../static/css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/style.css') }}">
+ </head>
+
+<body>
+<h1>Welcome {{user.first_name}}</h1>
+<a href="/recipes/new">+ create new recipe</a>
+<a href="/user_logout">log out</a>
+<h3>all posted recipes</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                name
+            </th>
+            <th>
+                under 30 ?
+            </th>
+            <th>
+                posted by
+            </th>
+            <th>
+                actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for x in recipes %}
+
+        <tr>
+            <td>{{x.name}}</td>
+            {% if x.under_30 == 1 %}
+                <td> 
+                    yes
+                </td>
+            {% else %}
+                <td>
+                    no
+                </td>
+            {% endif %}
+            <td>{{x.user.first_name}}</td>
+            <td>
+            {% if x.user_id == session['session_userid'] %}
+                <a href="/recipes/{{ x.id }}">show</a> | <a href="/recipes/delete/{{ x.id }}">delete</a> | <a href="/recipes/edit/{{ x.id }}">edit</a> | 
+            {% else %}
+            <a href="/recipes/{{ x.id }}">show</a> </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

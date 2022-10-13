@@ -1,0 +1,16 @@
+#warning {
+    background-color: black;
+    color: red;
+    width: 234px
+}
+
+#container {
+    display: flex;
+    flex-direction: row;
+}
+
+#oneRecipe {
+    border: 2px solid black;
+    margin: 15px;
+    padding: 15px
+}

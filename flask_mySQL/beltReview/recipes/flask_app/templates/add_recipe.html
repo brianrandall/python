@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/style.css') }}"> -->
+ </head>
+
+<body>
+<h1>add new recipe</h1>
+<a href="/home">back 2 recipes</a>
+<a href="/user_logout">logoutttt</a>
+<div id="warning">
+    <p>{% with messages = get_flashed_messages(category_filter = ['validate_recipe']) %}     <!-- declare a variable called messages -->
+        {% if messages %}                            <!-- check if there are any messages -->
+                {% for message in messages %}            <!-- loop through the messages -->
+                    <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                {% endfor %}
+            {% endif %}
+        {% endwith %}</p>
+</div>
+<div id="form">
+    <form action="/recipes/new/process" method="post">
+        <input type="hidden" name="user_id" value="{{session.session_userid}}">
+        <p>
+            name
+            <input type="text" name="recipe_name"> 
+        </p>
+        <p>
+            date created
+            <input type="date" name="recipe_date">
+        </p>
+        <p>
+            under 30 minutes ?
+            <input type="radio" name="recipe_under_30" value="1" checked> yes
+            <input type="radio" name="recipe_under_30" value="0"> no
+        </p>
+        <p>
+            description
+            <textarea name="recipe_description" cols="30" rows="10"> </textarea>
+        </p>
+        <p>
+            instructions
+            <textarea name="recipe_instructions" cols="30" rows="10"> </textarea>
+        </p>
+        <input type="submit" value="submit">
+    </form>
+</div>
+</body>
+
+
+</html>
+

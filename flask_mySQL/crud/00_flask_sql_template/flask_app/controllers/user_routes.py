@@ -1,10 +1,9 @@
 # controllers.py
 from flask_app import app
 from flask import render_template,redirect,request,session
-from flask_app.models.user import User
+from flask_app.models.model import Model
 
-
-
+# @app.route below
 
 @app.route("/")
 def index():
@@ -12,7 +11,7 @@ def index():
     return render_template("index.html")
             
 
-@app.route('/create_user', methods=["POST"])
+@app.route('/create____', methods=["POST"])
 def create_user():
     # First we make a data dictionary from our request.form coming from our template.
     # The keys in data need to line up exactly with the variables in our query string.
@@ -43,13 +42,8 @@ def edit (id):
 
 @app.route('/users/show/<int:id>')
 def show (id):
-    data = {
-    "id": id
-    }
-	#also
-	#user = User.get_one({id: id})
-	#(return ........., user = user)
-    return render_template("show_one.html", user=User.get_one(data))
+    user = User.get_one({id: id})
+    return render_template("show_one.html", user=user)
 
 @app.route('/users/update', methods=['post'])
 def update():
@@ -59,8 +53,6 @@ def update():
 
 @app.route('/users/delete/<int:id>')
 def delete(id):
-    data = {
-        'id': id
-    }
-    User.delete(data)
+    
+    user = User.delete({'id':id})
     return redirect('/users/all')
