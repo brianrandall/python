@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/style.css') }}"> -->
+ </head>
+
+<body>
+<h1>Rock On {{session['user_first_name']}}!!!</h1>
+<a href="/mybands">my bands</a>
+<a href="/home">dashboard</a>
+<form action="/users/logout">
+    <input type="submit" value="log out">
+</form>
+<h1>edit {{band.name}}</h1>
+<div id="warning">
+    <p>{% with messages = get_flashed_messages(category_filter = ['validate_band']) %}    
+        {% if messages %}                           
+                {% for message in messages %}            
+                    <p>{{message}}</p>                  
+                {% endfor %}
+            {% endif %}
+        {% endwith %}</p>
+</div>
+<div id="form">
+    <form action="/band/edit/process" method="post">
+        <input type="hidden" name="id" value="{{band.id}}">
+        <p>
+            name
+            <input type="text" name="name" value="{{band.name}}"> 
+        </p>
+        <p>
+            genre
+            <input type="text" name="genre" value="{{band.genre}}">
+        </p>
+        <p>
+            home town
+            <input type="text" name="home_town" value="{{band.home_town}}">
+        </p>
+        <input type="submit" value="update">
+    </form>
+</div>
+</body>
+
+
+</html>

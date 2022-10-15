@@ -3,7 +3,7 @@ from flask_app.config.mysqlconnection import connectToMySQL
 import re
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 from flask import flash, session
-from flask_app.models import recipes
+from flask_app.models import bands
 
 class User:
     
@@ -37,25 +37,24 @@ class User:
 
     @classmethod
     def get_one(cls, data):
-        query = "select * from users left join recipes on users.id = recipes.user_id where users.id = %(id)s;"
+        query = "select * from users left join bands on users.id = bands.user_id where users.id = %(id)s;"
         result = connectToMySQL(DATABASE).query_db(query, data)
         user = cls(result[0])
         
-        all_recipes = []
-        for recipe in result:
-            recipe_data = {
-                'id': recipe['recipes.id'],
-                'user_id': recipe['user_id'],
-                'name': recipe['name'],
-                'description': recipe['description'],
-                'instructions': recipe['instructions'],
-                'under_30':recipe['under_30'],
-                'created_at':recipe['recipes.created_at'],
-                'updated_at':recipe['recipes.updated_at']
+        all_bands = []
+        for band in result:
+            band_data = {
+                'id': band['bands.id'],
+                'name': band['name'],
+                'genre': band['genre'],
+                'home_town': band['home_town'],
+                'created_at':band['bands.created_at'],
+                'updated_at':band['bands.updated_at'],
+                'user_id': band['user_id']
             }
-            all_recipes.append(recipes.Recipe(recipe_data))
+            all_bands.append(bands.Band(band_data))
        
-        user.recipes = all_recipes
+        user.bands = all_bands
         return user
 
     # @classmethod
@@ -93,13 +92,14 @@ class User:
         # query = "SELECT * FROM users WHERE email = %(email)s;"
         # results = connectToMySQL(DATABASE).query_db(query, user)
 
-        if len(user['first_name']) < 2 or len(user['last_name']) < 2:
-            flash('name too short, get a longer name', 'reg')
+        if len(user['first_name']) < 2:
+            flash('first name too short, get a longer name', 'reg')
             is_valid = False
+            
 
-        # if len(results) >= 1:
-        #     flash("email already existsts please pick a new one")
-        #     is_valid = False
+        if  len(user['last_name']) < 2:
+            flash('last name too short, get a longer one', 'reg')
+            is_valid = False
 
         if not EMAIL_REGEX.match(user['email']): 
             flash("Invalid email address!", 'reg')
@@ -114,6 +114,7 @@ class User:
             flash('email already exists', 'reg')
             is_valid = False
 
+        session['user_first_name'] = user['first_name']
         return is_valid
 
     @staticmethod
@@ -142,5 +143,6 @@ class User:
                     flash('password incorrect try again', 'login')
                     is_valid = False
                 else:
-                    session['session_userid'] = potential_user.id
+                    session['userid'] = potential_user.id
+                    session['user_first_name'] = potential_user.first_name
         return is_valid

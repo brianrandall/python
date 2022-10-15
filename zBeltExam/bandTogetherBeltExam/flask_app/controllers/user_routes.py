@@ -3,7 +3,7 @@ import re
 from flask_app import app, bcrypt
 from flask import render_template,redirect,request,session
 from flask_app.models.users import User
-from flask_app.models.recipes import Recipe
+from flask_app.models.bands import Band
 
 # @app.route below
 
@@ -21,7 +21,7 @@ def create_user():
     hashed_password = bcrypt.generate_password_hash(request.form['password'])
     data={**request.form, 'password':hashed_password}
     session_userid=User.create(data)
-    session['session_userid'] = session_userid
+    session['userid'] = session_userid
     return redirect('/home')
 
 @app.route('/user_login', methods=['post'])
@@ -33,16 +33,17 @@ def user_login():
     return redirect('/home')
 
 @app.route('/home')
-def display_all_recipes():
+def dashboard():
 
-    user = User.get_one({'id':session['session_userid']})
-    recipes = Recipe.get_all()
-    return render_template('all_recipes.html', recipes = recipes, user = user)
+    user = User.get_one({'id':session['userid']})
+    bands = Band.get_all()
+    return render_template('all_bands.html', bands = bands, user = user)
 
-@app.route('/user_logout') 
+@app.route('/user/logout') 
 def user_logout():
     if 'session_userid' in session: 
-        del session['session_userid']
+        del session['userid']
+        del session['user_first_name']
     return redirect('/')
 
 #  ______ 

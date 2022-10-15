@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<head>
+    <!-- <link rel="stylesheet" type="text/css" href="../static/css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/style.css') }}">
+ </head>
+
+<body>
+<h1>Rock On {{session['user_first_name']}}!!!</h1>
+<a href="/mybands/{{user.id}}">my bands</a>
+<a href="/band/new">new band</a>
+<form action="/user/logout">
+    <input type="submit" value="log out">
+</form>
+<h3>all bands</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>
+                band name
+            </th>
+            <th>
+                founding member
+            </th>
+            <th>
+                genre
+            </th>
+            <th>
+                actions
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for x in bands %}
+
+        <tr>
+            <td>{{x.name}}</td>
+        
+            <td>{{x.user.full_name()}}</td>
+            <td>{{x.genre}}</td>
+            <td>
+            {% if x.user_id == session['userid'] %}
+                <a href="/band/edit/{{ x.id }}">edit</a> | <a href="/band/delete/{{ x.id }}">delete</a>
+            {% else %}
+            <a href="/band/join/{{ x.id }}">join</a> </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</body>
+</html>

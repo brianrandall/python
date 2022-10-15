@@ -45,7 +45,7 @@
             <td>{{x.user.first_name}}</td>
             <td>
             {% if x.user_id == session['session_userid'] %}
-                <a href="/recipes/{{ x.id }}">show</a> | <a href="/recipes/delete/{{ x.id }}">delete</a> | <a href="/recipes/edit/{{ x.id }}">edit</a> | 
+                <a href="/recipes/{{ x.id }}">show</a> | <a href="/recipes/delete/{{ x.id }}">delete</a> | <a href="/recipes/edit/{{ x.id }}">edit</a> 
             {% else %}
             <a href="/recipes/{{ x.id }}">show</a> </td>
             {% endif %}
